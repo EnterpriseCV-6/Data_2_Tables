@@ -1,0 +1,67 @@
+\documentclass{article}
+\usepackage[margin=1.in]{geometry}
+
+%Required for all tables
+\usepackage{amsmath}
+\usepackage{tabularray}
+%Required to use indicators
+\usepackage{tikz}
+\usetikzlibrary{positioning, shapes.geometric}
+\newcommand{\priority}[1]{
+	\tikz[node distance=1mm baseline]
+	{
+		\draw[fill=magenta, draw=none] (0,0) circle (.15);
+		\draw[fill=green, draw=none]  (0,0) -- (.15,0) arc[start angle=0, delta angle=#1,radius=.15cm] -- (0,0);
+	}
+}
+
+\title{Example Tables}
+\begin{document}
+\maketitle
+
+This document provides examples of a table the mg\_table\_2\_latex program can generate.
+Table \ref{Tab:Example_Table} is contains data representing the performance of three factories producing widgets.
+Table \ref{Tab:Example_Table_for_Colors} shows how indicators are used.
+
+\begin{table*}[h]
+\centering
+\caption{\label{Tab:Example_Table}Example of a table produced by mg\_Table\_builder showing properties of three factories producing widgets over five years. Case F1: Factory 1. Case F2: Factory 2. Case F3: Factory 3.}
+\begin{tabular}{c c c c c c c }
+\hline
+\multicolumn{1}{|c|}{\text{Data}} & \multicolumn{3}{c|}{\text{Average Working Widgets made per Day $\uparrow$}} & \multicolumn{3}{c|}{\text{Cost per Widget $\downarrow$}} \\ \hline
+\multicolumn{1}{|c|}{\text{Cases:}}& \multicolumn{1}{c}{\text{F1}} & \multicolumn{1}{c}{\text{F2}} & \multicolumn{1}{c|}{\text{F3}} & \multicolumn{1}{c}{\text{F1}} & \multicolumn{1}{c}{\text{F2}} & \multicolumn{1}{c|}{\text{F3}} \\ \hline
+\multicolumn{1}{|c|}{\text{2000}} & 25.92 \priority{168}  & 33.03 \priority{360}  & \multicolumn{1}{c |}{19.63 \priority{0} } & 36.88 \priority{273}  & 21.05 \priority{360}  & \multicolumn{1}{c |}{87.04 \priority{0} }  \\ \hline
+\multicolumn{1}{|c|}{\text{2001}} & 37.09 \priority{129}  & 7.67 \priority{0}  & \multicolumn{1}{c |}{89.19 \priority{360} } & 91.40 \priority{0}  & 77.78 \priority{110}  & \multicolumn{1}{c |}{46.97 \priority{360} }  \\ \hline
+\multicolumn{1}{|c|}{\text{2002}} & 26.94 \priority{186}  & 33.45 \priority{360}  & \multicolumn{1}{c |}{19.96 \priority{0} } & 12.86 \priority{360}  & 85.12 \priority{0}  & \multicolumn{1}{c |}{67.07 \priority{89} }  \\ \hline
+\multicolumn{1}{|c|}{\text{2003}} & 65.62 \priority{360}  & 47.87 \priority{204}  & \multicolumn{1}{c |}{24.56 \priority{0} } & 99.61 \priority{0}  & 93.90 \priority{23}  & \multicolumn{1}{c |}{10.34 \priority{360} }  \\ \hline
+\multicolumn{1}{|c|}{\text{2004}} & 47.43 \priority{0}  & 61.69 \priority{318}  & \multicolumn{1}{c |}{63.55 \priority{360} } & 91.01 \priority{0}  & 71.86 \priority{360}  & \multicolumn{1}{c |}{76.25 \priority{277} }  \\ \hline
+\multicolumn{1}{|c|}{\text{Average}} & 40.60 \priority{209}  & 36.74 \priority{0}  & \multicolumn{1}{c |}{43.38 \priority{360} } & 66.35 \priority{104}  & 69.94 \priority{0}  & \multicolumn{1}{c |}{57.53 \priority{360} }  \\ \hline
+ & & & & & &\\ 
+\cline{1-7}
+\multicolumn{1}{|c|}{\text{Data}} & \multicolumn{3}{c|}{\text{Percent faulty Widgets $\downarrow$}} & \multicolumn{3}{c|}{\text{Cost to Ship $\downarrow$}} \\ \cline{1-7}
+\multicolumn{1}{|c|}{\text{Cases:}}& \multicolumn{1}{c}{\text{F1}} & \multicolumn{1}{c}{\text{F2}} & \multicolumn{1}{c|}{\text{F3}} & \multicolumn{1}{c}{\text{F1}} & \multicolumn{1}{c}{\text{F2}} & \multicolumn{1}{c|}{\text{F3}} \\ \cline{1-7}
+\multicolumn{1}{|c|}{\text{2000}} & 78.65 \priority{80}  & 84.85 \priority{0}  & \multicolumn{1}{c |}{56.97 \priority{360} } & 52.29 \priority{103}  & 21.47 \priority{360}  & \multicolumn{1}{c |}{64.82 \priority{0} }  \\ \cline{1-7}
+\multicolumn{1}{|c|}{\text{2001}} & 75.18 \priority{0}  & 31.83 \priority{360}  & \multicolumn{1}{c |}{60.88 \priority{118} } & 88.13 \priority{0}  & 16.04 \priority{360}  & \multicolumn{1}{c |}{25.06 \priority{314} }  \\ \cline{1-7}
+\multicolumn{1}{|c|}{\text{2002}} & 81.37 \priority{313}  & 79.41 \priority{360}  & \multicolumn{1}{c |}{94.52 \priority{0} } & 7.57 \priority{360}  & 33.34 \priority{0}  & \multicolumn{1}{c |}{24.34 \priority{125} }  \\ \cline{1-7}
+\multicolumn{1}{|c|}{\text{2003}} & 88.67 \priority{0}  & 77.76 \priority{360}  & \multicolumn{1}{c |}{81.94 \priority{222} } & 16.07 \priority{360}  & 83.81 \priority{4}  & \multicolumn{1}{c |}{84.73 \priority{0} }  \\ \cline{1-7}
+\multicolumn{1}{|c|}{\text{2004}} & 82.57 \priority{0}  & 3.03 \priority{360}  & \multicolumn{1}{c |}{3.18 \priority{359} } & 41.82 \priority{360}  & 50.06 \priority{290}  & \multicolumn{1}{c |}{84.70 \priority{0} }  \\ \cline{1-7}
+\multicolumn{1}{|c|}{\text{Average}} & 81.29 \priority{0}  & 55.38 \priority{360}  & \multicolumn{1}{c |}{59.50 \priority{302} } & 41.18 \priority{354}  & 40.94 \priority{360}  & \multicolumn{1}{c |}{56.73 \priority{0} }  \\ \cline{1-7}
+\end{tabular}
+\end{table*}
+
+
+\begin{table*}[h]
+\centering
+\caption{\label{Tab:Example_Table_for_Colors}Example of how colored indicators work.}
+\begin{tabular}{|c|c c c c c | }
+\hline
+\text{Data} & \multicolumn{5}{c|}{\text{Amount Green $\uparrow$}} \\ \hline
+\text{Case:} & \text{Best} & \text{75\%} & \text{50\%} & \text{25\%} & \text{Worst} \\ \hline
+\text{Angle} &  360 \priority{360} &  270 \priority{270} &  180 \priority{180} &  90 \priority{90} &  0 \priority{0}  \\ \hline
+\text{Shifted Angle} &  540 \priority{360} &  450 \priority{270} &  360 \priority{180} &  270 \priority{90} &  180 \priority{0}  \\ \hline
+\text{Average} &  450 \priority{360} &  360 \priority{270} &  270 \priority{180} &  180 \priority{90} &  90 \priority{0}  \\ \hline
+\end{tabular}
+\end{table*}
+
+
+\end{document}
