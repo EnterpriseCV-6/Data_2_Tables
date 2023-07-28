@@ -1,5 +1,6 @@
 import mg_table_2_latex
 import numpy as np
+import argparse
 
 def  example_for_3D_data():
     """
@@ -18,7 +19,7 @@ def  example_for_3D_data():
     title = "Example_Table"
     # Abr = ["AWWpD", "CpW", "\\%PfW", "C2S"] #Abrs for Metrics
 
-
+    #Generate Random data to be saved
     Data = 100*np.random.rand(len(Datasets) * len(Metrics) * len(Cases)).reshape([len(Datasets), len(Metrics), len(Cases)])
     table_str = mg_table_2_latex.Multi_data_Multi_test_Table(Data, Datasets, Metrics, Cases, metrics_per_table=2, Case_Abr=Abr,
                                                        n_dec=2, table_caption=Caption, table_title=title, use_max_good_idx=max_good)
@@ -47,10 +48,15 @@ def color_example():
     return table_str
 
 def make_example_tex_file():
+    """
+    Creates a string that can be saved to as a .tex file and shows some example tables.
+    :return:
+    String to be saved as .tex file
+    """
     out_str = "\\documentclass{article}\n\\usepackage[margin=1.in]{geometry}\n\n"
 
     #Get required packages
-    out_str += mg_table_2_latex.get_LaTeX_packckages()
+    out_str += mg_table_2_latex.get_LaTeX_packages()
 
     out_str += "\n\n\\title{Example Tables}\n"
     out_str += "\\begin{document}\n"
@@ -67,17 +73,23 @@ def make_example_tex_file():
 
     out_str += "\\end{document}"
 
-    print(out_str)
+    return out_str
 
-def _main():
-    make_example_tex_file()
-    # print("Example Table")
-    # print(example_for_3D_data())
-    #
-    # print("Packages Required to LaTeX file:")
-    # print("------------------------------------------------")
-    # print(mg_table_2_latex.get_LaTeX_packckages())
-    # print("------------------------------------------------")
 
 if __name__ == '__main__':
-    _main()
+    #Parse arguments
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--file_name", type=str, required=True, help="Name of output file for example.")
+    args = parser.parse_args()
+    out_file = args.file_name
+
+    #Ensure a .tex file is created
+    if len(out_file) < 4  or out_file[-4::] != ".tex":
+        out_file += ".tex"
+    print("Creating example .tex file:", out_file)
+
+    #Save File
+    fout = open(out_file, "w")
+    fout.write(make_example_tex_file())
+    fout.close()
+    print("Done")

@@ -193,7 +193,7 @@ def __multi_table_print_v2(Data, Region_labels, Metric_labels, Case_labels, Case
 def Multi_data_Multi_test_Table(Data:np.ndarray, Dataset_labels:list, Metric_labels:list, Case_labels:list,
                                       Case_Abr = None, table_title = None, table_caption = None, highlight_best = True,
                                       use_max_good_idx = (), metrics_per_table = -1, n_dec = 3,
-                                      include_table_abr_defs = True, add_average = True, placement_indicators = "[h]"):
+                                      include_table_abr_defs = True, add_average = True, placement_indicators = "[h]") -> str:
     """
     This function automatically takes a 3D tensor and creates LaTeX table that rounds and colors the data.
     It returns a string that can be copied into LaTeX
@@ -205,7 +205,7 @@ def Multi_data_Multi_test_Table(Data:np.ndarray, Dataset_labels:list, Metric_lab
        Case_labels: List of strings with length of C, containing names of cases
 
     Optional Args:
-       Case_Abr: List of strings of length of C of abbrivated case names, default = None
+       Case_Abr: List of strings of length of C of abbreviated case names, default = None
        table_title: str that will appear as \label{Tab:str}, ignored if set to None, default = None
        table_caption: Caption for table, default = None
        highlight_best: Place circle indicators indicated score performance, default = True
@@ -245,7 +245,7 @@ def Multi_data_Multi_test_Table(Data:np.ndarray, Dataset_labels:list, Metric_lab
     ans += "\\end{table*}\n"
     return ans
 
-def get_LaTeX_packckages():
+def get_LaTeX_packages() -> str:
     """
     Get packages needed for LaTeX
     :return:
