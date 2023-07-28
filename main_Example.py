@@ -63,7 +63,7 @@ def make_example_tex_file():
     out_str += "\\maketitle\n\n"
 
     out_str += "This document provides examples of a table the mg\\_table\\_2\\_latex program can generate.\n"
-    out_str += "Table \\ref{Tab:Example_Table} is contains data representing the performance of three factories producing widgets.\n"
+    out_str += "Table \\ref{Tab:Example_Table} contains data representing the performance of three factories producing widgets.\n"
     out_str += "Table \\ref{Tab:Example_Table_for_Colors} shows how indicators are used.\n\n"
     out_str += example_for_3D_data()
     out_str += "\n\n"
